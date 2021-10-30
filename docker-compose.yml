@@ -1,0 +1,15 @@
+services:
+    nginx:
+        container_name: nginx_zerossl
+        image: bitnami/nginx
+        ports:
+            - '80:80'
+        environment:
+            NGINX_PORT: 80
+        volumes:
+            - type: bind
+              source: ./nginx_public
+              target: /app
+            - type: bind
+              source: ./nginx_conf/nginx.conf
+              target: /opt/bitnami/nginx/conf/nginx.conf
